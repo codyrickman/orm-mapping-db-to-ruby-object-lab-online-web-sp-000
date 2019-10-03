@@ -30,7 +30,6 @@ class Student
     sql = <<-SQL
       SELECT * FROM students WHERE name='#{name}'
       SQL
-      puts sql
     row = DB[:conn].execute(sql)
     puts row
     student = Student.new_from_db(row)
