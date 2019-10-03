@@ -31,6 +31,7 @@ class Student
       SELECT * FROM students WHERE name = ? LIMIT 1
       SQL
     row = DB[:conn].execute(sql, name)
+    puts row
     student = Student.new_from_db(row)
     return student.name
   end
