@@ -28,10 +28,11 @@ class Student
 
   def self.find_by_name(name)
     sql = <<-SQL
-      SELECT * FROM students WHERE name='#{name}'
+      SELECT * FROM students WHERE name=?
       SQL
-    row = DB[:conn].execute(sql)
-    puts row
+    DB[:conn].execute(sql, name).map do |row|
+        self.new_from_db(row)
+      end.first
     student = Student.new_from_db(row)
     return student.name
   end
