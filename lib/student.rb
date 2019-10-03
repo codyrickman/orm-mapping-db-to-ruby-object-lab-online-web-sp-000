@@ -52,7 +52,7 @@ class Student
       SELECT * FROM students WHERE grade<?
       SQL
     DB[:conn].execute(sql, 12).map do |row|
-        students << self.new_from_db(row).name
+        students << self.new_from_db(row)
       end
       return students
   end
