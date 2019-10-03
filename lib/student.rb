@@ -31,9 +31,8 @@ class Student
       SELECT * FROM students WHERE name=?
       SQL
     DB[:conn].execute(sql, name).map do |row|
-        self.new_from_db(row)
+        student = self.new_from_db(row)
       end.first
-    student = Student.new_from_db(row)
     return student.name
   end
 
