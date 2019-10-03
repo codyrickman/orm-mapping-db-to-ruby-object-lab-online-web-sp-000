@@ -76,7 +76,6 @@ class Student
     DB[:conn].execute(sql, 10).map do |row|
         students << self.new_from_db(row)
       end.first
-      return students
   end
 
   def save
